@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Administration Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        .tabs button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openTab(tabName) {
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <h2>Medication Administration Record</h2>
+    <div class="tabs">
+        <button onclick="openTab('orders')">Orders</button>
+        <button onclick="openTab('mar')">MAR</button>
+        <button onclick="openTab('nurseNotes')">Nurse Notes</button>
+        <button onclick="openTab('patientInfo')">Patient Info</button>
+    </div>
+    
+    <div id="orders" class="tab active">
+        <h3>Medication Orders</h3>
+        <table>
+            <tr><th>Medication</th><td>Amoxicillin 500mg</td></tr>
+            <tr><th>Dosage</th><td>1 Capsule</td></tr>
+            <tr><th>Route</th><td>Oral</td></tr>
+            <tr><th>Frequency</th><td>Twice Daily</td></tr>
+            <tr><th>Prescribing Doctor</th><td>Dr. Smith</td></tr>
+        </table>
+    </div>
+
+    <div id="mar" class="tab">
+        <h3>Medication Administration Record (MAR)</h3>
+        <table>
+            <tr><th>Date & Time</th><td>03/25/2025 - 08:00 AM</td></tr>
+            <tr><th>Administered By</th><td>Nurse Jane</td></tr>
+            <tr><th>Notes</th><td>No adverse reactions</td></tr>
+        </table>
+    </div>
+
+    <div id="nurseNotes" class="tab">
+        <h3>Nurse Notes</h3>
+        <textarea rows="5" cols="50" placeholder="Enter nurse notes here..."></textarea>
+    </div>
+
+    <div id="patientInfo" class="tab">
+        <h3>Patient Information</h3>
+        <table>
+            <tr><th>Patient Name</th><td>John Doe</td></tr>
+            <tr><th>DOB</th><td>01/15/1980</td></tr>
+            <tr><th>Allergies</th><td>None</td></tr>
+            <tr><th>Medical Conditions</th><td>Hypertension</td></tr>
+        </table>
+    </div>
+</body>
+</html>
