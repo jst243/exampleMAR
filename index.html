@@ -8,33 +8,77 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .tabs button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .tabs button:hover, .tabs button.active {
+            background-color: #0056b3;
+            border-radius: 8px;
         }
         .tab {
             display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
         }
         .tab.active {
             display: block;
         }
-        .tabs button {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
             padding: 10px;
-            margin: 5px;
-            cursor: pointer;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
     </style>
     <script>
         function openTab(tabName) {
             var tabs = document.getElementsByClassName('tab');
+            var buttons = document.querySelectorAll('.tabs button');
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].classList.remove('active');
+                buttons[i].classList.remove('active');
             }
             document.getElementById(tabName).classList.add('active');
+            document.querySelector(`[onclick="openTab('${tabName}')"]`).classList.add('active');
         }
     </script>
 </head>
 <body>
     <h2>Medication Administration Record</h2>
     <div class="tabs">
-        <button onclick="openTab('orders')">Orders</button>
+        <button onclick="openTab('orders')" class="active">Orders</button>
         <button onclick="openTab('mar')">MAR</button>
         <button onclick="openTab('nurseNotes')">Nurse Notes</button>
         <button onclick="openTab('patientInfo')">Patient Info</button>
@@ -62,7 +106,7 @@
 
     <div id="nurseNotes" class="tab">
         <h3>Nurse Notes</h3>
-        <textarea rows="5" cols="50" placeholder="Enter nurse notes here..."></textarea>
+        <textarea rows="5" placeholder="Enter nurse notes here..."></textarea>
     </div>
 
     <div id="patientInfo" class="tab">
