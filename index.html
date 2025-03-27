@@ -55,12 +55,6 @@
         th {
             background-color: #f2f2f2;
         }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
     </style>
     <script>
         function openTab(tabName) {
@@ -108,7 +102,13 @@
 
     <div id="nurseNotes" class="tab">
         <h3>Nurse Notes</h3>
-        <textarea rows="5" placeholder="Enter nurse notes here..."></textarea>
+        <table>
+            <tr><th>Date & Time</th><th>Notes</th></tr>
+            <tr><td>03/25/2025 - 08:00</td><td>Patient assessed, vital signs stable, no distress observed.</td></tr>
+            <tr><td>03/25/2025 - 12:00</td><td>Administered Amoxicillin 500mg PO. Patient tolerated well.</td></tr>
+            <tr><td>03/25/2025 - 16:00</td><td>Patient reports mild nausea, provided water and advised rest.</td></tr>
+            <tr><td>03/25/2025 - 20:00</td><td>Reassessed. Nausea resolved. No signs of adverse reactions.</td></tr>
+        </table>
     </div>
 
     <div id="patientInfo" class="tab">
