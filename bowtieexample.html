@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive NCLEX Bow-Tie Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .box {
+            border: 1px solid black;
+            padding: 20px;
+            width: 200px;
+            margin: 10px auto;
+            background-color: #f9f9f9;
+        }
+        .bowtie-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .arrow {
+            font-size: 32px;
+        }
+        .answer-zone {
+            margin-top: 20px;
+            border: 1px dashed #aaa;
+            padding: 10px;
+        }
+        .draggable {
+            background-color: #dfe6e9;
+            padding: 10px;
+            margin: 5px;
+            cursor: grab;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive NCLEX Bow-Tie Question</h1>
+        <p>Drag the correct answers to their matching boxes below. When done, click "Submit."</p>
+
+        <!-- Bow-tie layout -->
+        <div class="bowtie-section">
+            <div class="box" id="condition">
+                <h3>Condition</h3>
+                <p>Scenario: Patient presents with elevated blood pressure and chest pain. What is the priority condition?</p>
+            </div>
+            <div class="arrow">⇨</div>
+            <div class="box" id="actions">
+                <h3>Actions</h3>
+                <p>Drag the appropriate nursing interventions here.</p>
+            </div>
+            <div class="arrow">⇨</div>
+            <div class="box" id="outcomes">
+                <h3>Outcomes</h3>
+                <p>Drag the expected patient outcomes here.</p>
+            </div>
+        </div>
+
+        <!-- Answer zone -->
+        <div class="answer-zone">
+            <h3>Possible Answers:</h3>
+            <div class="draggable" draggable="true">Administer antihypertensive medication</div>
+            <div class="draggable" draggable="true">Decrease cardiac workload</div>
+            <div class="draggable" draggable="true">Assess for myocardial infarction</div>
+            <div class="draggable" draggable="true">Reduction in pain</div>
+            <div class="draggable" draggable="true">Blood pressure within normal limits</div>
+        </div>
+
+        <!-- Submit button -->
+        <button onclick="submitAnswers()">Submit</button>
+    </div>
+
+    <script>
+        const draggables = document.querySelectorAll('.draggable');
+        const boxes = document.querySelectorAll('.box');
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => {
+                draggable.classList.add('dragging');
+            });
+
+            draggable.addEventListener('dragend', () => {
+                draggable.classList.remove('dragging');
+            });
+        });
+
+        boxes.forEach(box => {
+            box.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const dragging = document.querySelector('.dragging');
+                box.appendChild(dragging);
+            });
+        });
+
+        function submitAnswers() {
+            alert('Your answers have been submitted!');
+            // Add validation logic here if needed
+        }
+    </script>
+</body>
+</html>
